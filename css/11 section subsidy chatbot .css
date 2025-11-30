@@ -1,0 +1,742 @@
+/**
+ * =====================================================
+ * ALSN 보조금 챗봇 스타일
+ * 파일: 11-section-subsidy-chatbot.css
+ * 용도: 워드프레스 커스터마이저 > 추가 CSS에 붙여넣기
+ * =====================================================
+ */
+
+/* ===== 챗봇 섹션 컨테이너 ===== */
+.alsn-chatbot-section {
+    padding: var(--alsn-spacing-lg) var(--alsn-spacing-md);
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: var(--alsn-gray-50);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.alsn-chatbot-container {
+    width: 100%;
+    max-width: 480px;
+    background: var(--alsn-white);
+    border-radius: var(--alsn-radius-xl);
+    box-shadow: var(--alsn-shadow-xl);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 48px);
+    max-height: calc(100dvh - 48px);
+}
+
+/* ===== 헤더 ===== */
+.chatbot-header {
+    display: flex;
+    align-items: center;
+    gap: var(--alsn-spacing-md);
+    padding: var(--alsn-spacing-lg);
+    background: var(--alsn-gradient-primary);
+    color: var(--alsn-white);
+    position: relative;
+}
+
+.chatbot-header-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: var(--alsn-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.chatbot-header-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.chatbot-header-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.chatbot-title {
+    font-family: var(--alsn-font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+}
+
+.chatbot-subtitle {
+    font-size: 0.813rem;
+    opacity: 0.9;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.chatbot-reset-btn {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    border-radius: var(--alsn-radius-sm);
+    color: var(--alsn-white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--alsn-transition);
+    flex-shrink: 0;
+}
+
+.chatbot-reset-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.chatbot-reset-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* ===== 진행 상태 바 ===== */
+.chatbot-progress {
+    padding: var(--alsn-spacing-md) var(--alsn-spacing-lg);
+    background: var(--alsn-gray-50);
+    border-bottom: 1px solid var(--alsn-gray-100);
+    display: flex;
+    align-items: center;
+    gap: var(--alsn-spacing-md);
+}
+
+.progress-bar {
+    flex: 1;
+    height: 6px;
+    background: var(--alsn-gray-200);
+    border-radius: var(--alsn-radius-full);
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--alsn-gradient-primary);
+    border-radius: var(--alsn-radius-full);
+    transition: width 0.4s ease;
+}
+
+.progress-text {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--alsn-gray-500);
+    white-space: nowrap;
+}
+
+/* ===== 채팅 메시지 영역 ===== */
+.chatbot-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--alsn-spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--alsn-spacing-md);
+    scroll-behavior: smooth;
+    min-height: 300px;
+}
+
+/* 메시지 공통 */
+.chat-message {
+    display: flex;
+    gap: var(--alsn-spacing-sm);
+    max-width: 90%;
+    animation: chatFadeIn 0.3s ease;
+}
+
+@keyframes chatFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 봇 메시지 */
+.chat-message.bot {
+    align-self: flex-start;
+}
+
+.chat-message.bot .message-avatar {
+    width: 36px;
+    height: 36px;
+    background: var(--alsn-gradient-primary);
+    border-radius: var(--alsn-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.chat-message.bot .message-avatar svg {
+    width: 20px;
+    height: 20px;
+    color: var(--alsn-white);
+}
+
+.chat-message.bot .message-bubble {
+    background: var(--alsn-gray-100);
+    color: var(--alsn-gray-800);
+    padding: var(--alsn-spacing-md);
+    border-radius: var(--alsn-radius);
+    border-top-left-radius: 4px;
+    font-size: 0.938rem;
+    line-height: 1.6;
+}
+
+/* 사용자 메시지 */
+.chat-message.user {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.chat-message.user .message-bubble {
+    background: var(--alsn-gradient-primary);
+    color: var(--alsn-white);
+    padding: var(--alsn-spacing-sm) var(--alsn-spacing-md);
+    border-radius: var(--alsn-radius);
+    border-top-right-radius: 4px;
+    font-size: 0.938rem;
+    line-height: 1.5;
+}
+
+/* 타이핑 인디케이터 */
+.typing-indicator {
+    display: flex;
+    gap: 4px;
+    padding: var(--alsn-spacing-md);
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    background: var(--alsn-gray-400);
+    border-radius: 50%;
+    animation: typingBounce 1.4s ease-in-out infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typingBounce {
+    0%, 60%, 100% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-8px);
+    }
+}
+
+/* ===== 입력 영역 (선택 버튼) ===== */
+.chatbot-input-area {
+    padding: var(--alsn-spacing-md) var(--alsn-spacing-lg) var(--alsn-spacing-lg);
+    background: var(--alsn-white);
+    border-top: 1px solid var(--alsn-gray-100);
+}
+
+.input-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--alsn-spacing-sm);
+}
+
+.input-options.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--alsn-spacing-sm);
+}
+
+.input-options.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--alsn-spacing-sm);
+}
+
+/* 옵션 버튼 */
+.option-btn {
+    background: var(--alsn-white);
+    border: 2px solid var(--alsn-gray-200);
+    border-radius: var(--alsn-radius);
+    padding: var(--alsn-spacing-md);
+    font-size: 0.938rem;
+    font-weight: 500;
+    color: var(--alsn-gray-700);
+    cursor: pointer;
+    transition: var(--alsn-transition);
+    text-align: center;
+    line-height: 1.4;
+}
+
+.option-btn:hover {
+    border-color: var(--alsn-primary);
+    background: var(--alsn-primary-50);
+    color: var(--alsn-primary);
+}
+
+.option-btn:active {
+    transform: scale(0.98);
+}
+
+.option-btn.selected {
+    border-color: var(--alsn-primary);
+    background: var(--alsn-primary);
+    color: var(--alsn-white);
+}
+
+/* 다중 선택 버튼 */
+.option-btn.multi-select {
+    position: relative;
+    padding-left: 40px;
+    text-align: left;
+}
+
+.option-btn.multi-select::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--alsn-gray-300);
+    border-radius: 4px;
+    transition: var(--alsn-transition);
+}
+
+.option-btn.multi-select.selected::before {
+    background: var(--alsn-primary);
+    border-color: var(--alsn-primary);
+}
+
+.option-btn.multi-select.selected::after {
+    content: '';
+    position: absolute;
+    left: 17px;
+    top: 50%;
+    transform: translateY(-60%) rotate(45deg);
+    width: 5px;
+    height: 10px;
+    border: solid var(--alsn-white);
+    border-width: 0 2px 2px 0;
+}
+
+/* 확인 버튼 */
+.confirm-btn {
+    width: 100%;
+    background: var(--alsn-gradient-primary);
+    border: none;
+    border-radius: var(--alsn-radius);
+    padding: var(--alsn-spacing-md);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--alsn-white);
+    cursor: pointer;
+    transition: var(--alsn-transition);
+    margin-top: var(--alsn-spacing-sm);
+}
+
+.confirm-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: var(--alsn-shadow-md);
+}
+
+.confirm-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* 지역 선택 드롭다운 */
+.region-select-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--alsn-spacing-sm);
+}
+
+.region-select {
+    width: 100%;
+    padding: var(--alsn-spacing-md);
+    border: 2px solid var(--alsn-gray-200);
+    border-radius: var(--alsn-radius);
+    font-size: 0.938rem;
+    color: var(--alsn-gray-700);
+    background: var(--alsn-white);
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 20px;
+    transition: var(--alsn-transition);
+}
+
+.region-select:focus {
+    outline: none;
+    border-color: var(--alsn-primary);
+}
+
+/* 생년월일/성별 입력 */
+.birth-gender-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--alsn-spacing-md);
+}
+
+.birth-input-group {
+    display: flex;
+    gap: var(--alsn-spacing-sm);
+}
+
+.birth-input {
+    flex: 1;
+    padding: var(--alsn-spacing-md);
+    border: 2px solid var(--alsn-gray-200);
+    border-radius: var(--alsn-radius);
+    font-size: 0.938rem;
+    text-align: center;
+    transition: var(--alsn-transition);
+}
+
+.birth-input:focus {
+    outline: none;
+    border-color: var(--alsn-primary);
+}
+
+.birth-input::placeholder {
+    color: var(--alsn-gray-400);
+}
+
+.gender-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--alsn-spacing-sm);
+}
+
+/* ===== 결과 모달 ===== */
+.chatbot-result-modal {
+    position: fixed;
+    inset: 0;
+    z-index: var(--alsn-z-modal);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--alsn-transition);
+}
+
+.chatbot-result-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.result-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.result-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    max-height: 85vh;
+    background: var(--alsn-white);
+    border-radius: var(--alsn-radius-xl) var(--alsn-radius-xl) 0 0;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chatbot-result-modal.active .result-modal-content {
+    transform: translateY(0);
+}
+
+.result-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--alsn-spacing-lg);
+    border-bottom: 1px solid var(--alsn-gray-100);
+}
+
+.result-modal-header h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--alsn-gray-900);
+}
+
+.result-close-btn {
+    width: 36px;
+    height: 36px;
+    background: var(--alsn-gray-100);
+    border: none;
+    border-radius: var(--alsn-radius-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--alsn-transition);
+}
+
+.result-close-btn:hover {
+    background: var(--alsn-gray-200);
+}
+
+.result-close-btn svg {
+    width: 20px;
+    height: 20px;
+    color: var(--alsn-gray-600);
+}
+
+.result-modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--alsn-spacing-lg);
+}
+
+/* 결과 통계 */
+.result-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--alsn-spacing-md);
+    margin-bottom: var(--alsn-spacing-lg);
+}
+
+.stat-card {
+    background: var(--alsn-gray-50);
+    border-radius: var(--alsn-radius);
+    padding: var(--alsn-spacing-md);
+    text-align: center;
+}
+
+.stat-card.highlight {
+    background: var(--alsn-primary-50);
+}
+
+.stat-number {
+    font-family: var(--alsn-font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--alsn-primary);
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 0.813rem;
+    color: var(--alsn-gray-600);
+}
+
+/* 결과 카드 리스트 */
+.result-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--alsn-spacing-md);
+}
+
+.result-card {
+    background: var(--alsn-white);
+    border: 1px solid var(--alsn-gray-200);
+    border-radius: var(--alsn-radius);
+    padding: var(--alsn-spacing-md);
+    transition: var(--alsn-transition);
+}
+
+.result-card:hover {
+    border-color: var(--alsn-primary-200);
+    box-shadow: var(--alsn-shadow-md);
+}
+
+.result-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--alsn-spacing-sm);
+    margin-bottom: var(--alsn-spacing-sm);
+}
+
+.result-card-badge {
+    background: var(--alsn-primary);
+    color: var(--alsn-white);
+    font-size: 0.688rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: var(--alsn-radius-sm);
+    white-space: nowrap;
+}
+
+.result-card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--alsn-gray-900);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.result-card-org {
+    font-size: 0.813rem;
+    color: var(--alsn-gray-500);
+    margin-bottom: var(--alsn-spacing-sm);
+}
+
+.result-card-desc {
+    font-size: 0.875rem;
+    color: var(--alsn-gray-600);
+    line-height: 1.5;
+    margin-bottom: var(--alsn-spacing-md);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.result-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--alsn-primary);
+    text-decoration: none;
+}
+
+.result-card-link:hover {
+    text-decoration: underline;
+}
+
+.result-card-link svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* 결과 없음 */
+.no-result {
+    text-align: center;
+    padding: var(--alsn-spacing-2xl) var(--alsn-spacing-lg);
+}
+
+.no-result-icon {
+    font-size: 3rem;
+    margin-bottom: var(--alsn-spacing-md);
+}
+
+.no-result-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--alsn-gray-800);
+    margin-bottom: var(--alsn-spacing-sm);
+}
+
+.no-result-desc {
+    font-size: 0.875rem;
+    color: var(--alsn-gray-500);
+    line-height: 1.5;
+}
+
+/* 로딩 */
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--alsn-spacing-2xl);
+}
+
+.spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid var(--alsn-gray-200);
+    border-top-color: var(--alsn-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: var(--alsn-spacing-md);
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-text {
+    font-size: 0.938rem;
+    color: var(--alsn-gray-600);
+}
+
+/* ===== 반응형 ===== */
+@media (max-width: 768px) {
+    .alsn-chatbot-section {
+        padding: 0;
+        align-items: stretch;
+    }
+    
+    .alsn-chatbot-container {
+        max-width: 100%;
+        border-radius: 0;
+        max-height: 100vh;
+        max-height: 100dvh;
+    }
+    
+    .chatbot-header {
+        padding: var(--alsn-spacing-md);
+        padding-top: max(var(--alsn-spacing-md), env(safe-area-inset-top));
+    }
+    
+    .chatbot-title {
+        font-size: 1.125rem;
+    }
+    
+    .chatbot-messages {
+        padding: var(--alsn-spacing-md);
+    }
+    
+    .chatbot-input-area {
+        padding: var(--alsn-spacing-md);
+        padding-bottom: max(var(--alsn-spacing-md), env(safe-area-inset-bottom));
+    }
+    
+    .chat-message {
+        max-width: 95%;
+    }
+    
+    .result-modal-content {
+        max-width: 100%;
+        max-height: 90vh;
+    }
+}
+
+/* 데스크탑 레이아웃 */
+@media (min-width: 769px) {
+    .alsn-chatbot-section {
+        padding: var(--alsn-spacing-xl);
+        align-items: center;
+    }
+    
+    .chatbot-result-modal {
+        align-items: center;
+    }
+    
+    .result-modal-content {
+        border-radius: var(--alsn-radius-xl);
+        max-height: 80vh;
+    }
+}
