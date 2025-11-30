@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>챗봇 파일 생성기</title>
+</head>
+<body>
+    <h1>보조금24 챗봇 파일 생성</h1>
+    <button onclick="downloadAll()">모든 파일 다운로드</button>
+    
+    <script>
+    function download(filename, text) {
+        const element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+    }
+    
+    function downloadAll() {
+        alert('파일 다운로드를 시작합니다!\n\n' +
+              '1. index.html\n' +
+              '2. config.js\n' +
+              '3. chatbot.css (css 폴더에 넣으세요)\n' +
+              '4. api.js (js 폴더에 넣으세요)\n' +
+              '5. chatbot.js (js 폴더에 넣으세요)');
+        
+        // 각 파일 내용을 여기에 넣고 다운로드
+        // (실제로는 위에서 제공한 코드를 복사)
+    }
+    </script>
+</body>
+</html>
